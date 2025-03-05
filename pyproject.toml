@@ -1,0 +1,28 @@
+[build-system]
+requires = [
+    "setuptools >= 40.9.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solar_storms"
+version = "0.1"
+dependencies = [
+    "click",
+    "flask",
+    "Flask-APScheduler",
+    "flask_restful",
+    "requests",
+]
+requires-python = ">= 3.8"
+authors = [
+    {name = "R. Menzel"},
+]
+maintainers = [
+    {name = "R. Menzel", email="menzel@gmail.com"}
+]
+description = "Solar storms data pipeline and dashboard."
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python"
+]
