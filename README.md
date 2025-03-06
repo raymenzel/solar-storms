@@ -90,3 +90,19 @@ The general for process for adding a new data pipeline is:
 ### Example: NOAA/DSCOVR
 As an example, please review the [NOAA's DSCOVR realtime solar wind data pipeline](solar_storms/noaa_dscovr.py)
 You will see [here](solar_storms/__init__.py) that it is scheduled to run every 60 seconds.
+
+### How to build and run this application in docker
+A Dockerfile is provided that can be build into a docker image by running:
+
+```
+$ sudo docker build -t solar_storms:latest .
+```
+
+Once the image is built, it can be run inside the contain by running:
+
+```
+$ sudo docker run -d -p 5000:5000 solar_storms:latest
+```
+
+The application's rest API can be reached at https://127.0.0.1:5000/api/solar-wind.
+If desired, we can give the container access to a local database with binding mounts.
