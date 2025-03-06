@@ -48,4 +48,32 @@ REST API is set up to make this data accessible.  It can be accessed by
 visiting the `/api/solar-wind` route. In the near future, I hope to add
 a dashboard to the applications home page.
 
+### Accessing in the REST API.
+
 ### How the data pipeline is designed.
+The data pipeline follows the ETL (extract-transform-load) paradigm.  An abstract
+base class is provided [here](solar_storms/data_pipeline.py).  The
+idea is that for each data source, a class can be made that inherits
+from this type and the methods can be overridden as necessary.  The
+`extract` method is responsible for gathering the necessary data from
+the data source.  The `transform` method is responsible for cleaning
+and transforming the data so that is compatible with how this application will
+use it.  Lastly, the `load` method is responsible for loading the
+data into this application's database.  For simplicity (and due to
+the relatively small amount of data that is currently being processed),
+an sqlite3 database is currently used.  In a real production environment,
+this would be transitioned to an actual database server.  The data pipelines
+can be configured to run on a set schedule.  Currently, the application's
+data pipeline for [NOAA's DSCOVR realtime solar wind data](solar_storms/noaa_dscovr.py)
+is configured to run every minute.
+
+The general for process for adding a new data pipeline is:
+1.) Add a new table to the [database schema](solar_storms/schema.sql).
+2.) Add to the database (manually for now).
+3.) Create a new python class that inherits from the `DataPipeline` class.
+4.) Override the `extract`, `transform`, and `load` methods.
+5.) Set the schedule for when the data pipeline will be refreshed.
+
+### Example: NOAA/DSCOVR
+As an example, please review the [NOAA's DSCOVR realtime solar wind data pipeline](solar_storms/noaa_dscovr.py)
+You will see [here](solar_storms/__init__.py) that it is scheduled to run every 60 seconds.
