@@ -5,8 +5,8 @@ A data pipeline to track solar and predict solar storms.
 Clone the repository by running:
 
 ```
-$ git clone https://github.com/raymenzel/solar_storms.git
-$ cd solar_storms
+$ git clone https://github.com/raymenzel/solar-storms.git
+$ cd solar-storms
 ```
 
 ### How to install this code.
