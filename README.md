@@ -19,10 +19,10 @@ $ pip install --upgrade pip
 $ pip install .
 ```
 
-### How to run server.
+### How to run the server
 Before starting the server for the first time, the database must be
 initialized.  For now, the database just uses `sqlite3`.  The path
-to the database controlled using an environment variable, which must
+to the database is controlled using an environment variable, which must
 always be set before the server is run:
 
 ```
@@ -55,7 +55,7 @@ users to query the database, and pass in certain arguments.
 ![screenshot](docs/screenshot.png)
 
 Currently, only two arguments are supported: `time_begin` and `time_end`.  These
-allow uses to filter to only records that exist in that time range by visiting:
+allow users to filter to only records that exist in that time range by visiting:
 
 ```
 http://127.0.0.1:5000/api/solar-wind?time_begin=2025-03-06_04:51:00&time_end=2025-03-06_04:55:00
@@ -104,5 +104,5 @@ Once the image is built, it can be run inside the contain by running:
 $ sudo docker run -d -p 5000:5000 solar_storms:latest
 ```
 
-The application's rest API can be reached at https://127.0.0.1:5000/api/solar-wind.
+The application's rest API can be reached at http://127.0.0.1:5000/api/solar-wind.
 If desired, we can give the container access to a local database with binding mounts.
