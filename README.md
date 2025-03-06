@@ -35,7 +35,7 @@ Once that environment variable is set, the database can be initialized by runnin
 $ python3 -m flask --app solar_storms init-db
 ```
 
-Now, a development server can be started with flask by running:
+Now, a development server can be started at 127.0.0.1:5000 with flask by running:
 
 ```
 $ python3 -m flask --app solar_storms run
@@ -49,6 +49,19 @@ visiting the `/api/solar-wind` route. In the near future, I hope to add
 a dashboard to the applications home page.
 
 ### Accessing in the REST API.
+A simple REST API is available via the `api/solar-wind` route.  It allows
+users to query the database, and pass in certain arguments.
+
+![screenshot](docs/screenshot.png)
+
+Currently, only two arguments are supported: `time_begin` and `time_end`.  These
+allow uses to filter to only records that exist in that time range by visiting:
+
+```
+http://127.0.0.1:5000/api/solar-wind?time_begin=2025-03-06_04:51:00&time_end=2025-03-06_04:55:00
+```
+As shown [here](solar_storms/rest_api.py), many more arguments can be added as
+desired.
 
 ### How the data pipeline is designed.
 The data pipeline follows the ETL (extract-transform-load) paradigm.  An abstract
