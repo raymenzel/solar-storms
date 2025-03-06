@@ -12,6 +12,7 @@ dependencies = [
     "flask",
     "Flask-APScheduler",
     "flask_restful",
+    "pytest",
     "requests",
 ]
 requires-python = ">= 3.8"
